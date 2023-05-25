@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="02272630-e587-4778-acac-b89966bbab28" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/APIGateway/target/classes/com/HiringX/APIGateway/ApiGatewayApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserJobMapping/target/classes/com/HiringX/UserJobMapping/Controller/UserJobMappingController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserJobMapping/target/classes/com/HiringX/UserJobMapping/Entity/UserJobMapping$UserJobMappingBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserJobMapping/target/classes/com/HiringX/UserJobMapping/Entity/UserJobMapping.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserJobMapping/target/classes/com/HiringX/UserJobMapping/Exception/JobMappingNotFoundException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserJobMapping/target/classes/com/HiringX/UserJobMapping/Exception/JobMappingNotFoundGlobalController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserJobMapping/target/classes/com/HiringX/UserJobMapping/Repository/UserJobMappingRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserJobMapping/target/classes/com/HiringX/UserJobMapping/Service/UserJobMappingService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserJobMapping/target/classes/com/HiringX/UserJobMapping/Service/UserJobMappingServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserJobMapping/target/classes/com/HiringX/UserJobMapping/UserJobMappingApplication.class" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2QGwgrliTAiIJxz4WLnAcUUkj2A" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.ApiGatewayApplication">
+    <configuration name="ApiGatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.HiringX.APIGateway.ApiGatewayApplication" />
+      <module name="APIGateway" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.HiringX.APIGateway.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserJobMappingApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.HiringX.UserJobMapping.UserJobMappingApplication" />
+      <module name="UserJobMapping" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.HiringX.UserJobMapping.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.HiringX.UserService.UserServiceApplication" />
+      <module name="UserService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.HiringX.UserService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserJobMappingServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="UserJobMapping" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.HiringX.UserJobMapping.Service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.HiringX.UserJobMapping.Service" />
+      <option name="MAIN_CLASS_NAME" value="com.HiringX.UserJobMapping.Service.UserJobMappingServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserJobMappingServiceTest.testForGetMappingByParticularUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="UserJobMapping" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.HiringX.UserJobMapping.Service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.HiringX.UserJobMapping.Service" />
+      <option name="MAIN_CLASS_NAME" value="com.HiringX.UserJobMapping.Service.UserJobMappingServiceTest" />
+      <option name="METHOD_NAME" value="testForGetMappingByParticularUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ApiGatewayApplication" />
+        <item itemvalue="JUnit.UserJobMappingServiceTest" />
+        <item itemvalue="JUnit.UserJobMappingServiceTest.testForGetMappingByParticularUser" />
+        <item itemvalue="Application.UserServiceApplication" />
+        <item itemvalue="Application.UserJobMappingApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="02272630-e587-4778-acac-b89966bbab28" name="Changes" comment="" />
+      <created>1684993344610</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1684993344610</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -12,9 +12,5 @@ public class UserJobMappingApplication {
 		SpringApplication.run(UserJobMappingApplication.class, args);
 	}
 
-	@Bean
-	public RestTemplate restTemplate(){
-		return new RestTemplate();
-	}
 
 }
