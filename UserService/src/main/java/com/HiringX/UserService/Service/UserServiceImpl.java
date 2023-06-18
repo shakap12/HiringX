@@ -130,7 +130,17 @@ public class UserServiceImpl implements UserService {
             User user=userrepository.findById(ele).orElseThrow(()-> new UserNotFoundException(ele));
             usersForAJobWithDetails.add(user);
         });
-        return usersForAJobWithDetails;
+        HashMap<Long,User> uniqueUserForAJob=new HashMap<>();
+        for(User ele:usersForAJobWithDetails){
+            if(!uniqueUserForAJob.containsKey(ele.getUserId())){
+                uniqueUserForAJob.put(ele.getUserId(), ele);
+            }
+        }
+        List<User> usersForJob=new ArrayList<>();
+        for (Map.Entry<Long,User> entry : uniqueUserForAJob.entrySet()){
+            usersForJob.add(entry.getValue());
+        }
+        return usersForJob;
     }
 
     @Override

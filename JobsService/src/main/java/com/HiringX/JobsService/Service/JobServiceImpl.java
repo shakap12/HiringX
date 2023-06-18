@@ -3,12 +3,18 @@ package com.HiringX.JobsService.Service;
 import com.HiringX.JobsService.Entity.Job;
 import com.HiringX.JobsService.Exception.JobNotFoundException;
 import com.HiringX.JobsService.Repository.JobRepository;
+import jakarta.annotation.PostConstruct;
+import jakarta.ws.rs.core.HttpHeaders;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.batch.BatchProperties;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +26,18 @@ public class JobServiceImpl implements JobService{
     @Autowired
     private JobRepository jobrepository;
 
+    public WebClient jobMappingWebClient;
     public static final Logger log= LoggerFactory.getLogger(JobServiceImpl.class);
+
+
+    @PostConstruct
+    public void init() {
+        log.info("Web Clients getting initialized");
+        jobMappingWebClient= WebClient.builder()
+                .baseUrl("http://localhost:8084/userjobmapping/")
+                .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .build();
+    }
     @Override
     public Job createJob(Job job) {
         log.info("Job posted successfully");
@@ -131,6 +148,23 @@ public class JobServiceImpl implements JobService{
     public void deleteJobWithId(Long jobId) {
         log.warn("Deleting job with ID-"+jobId);
         jobrepository.deleteById(jobId);
+    }
+
+    @Override
+    public List<Job> getJobsForAUser(Long userid) {
+        List<Long> listofJobIdsForAUser = jobMappingWebClient.get()
+                .uri("getjobidsforauser/" + userid)
+                .retrieve()
+                .bodyToFlux(Long.class).
+                collectList().
+                block();
+
+        System.out.println(listofJobIdsForAUser);
+        List<Job> jobsForASpecificUser = new ArrayList<>();
+        listofJobIdsForAUser.forEach((ele)->{
+            jobsForASpecificUser.add(jobrepository.findById(ele).orElseThrow(()->new JobNotFoundException(ele)));
+        });
+        return jobsForASpecificUser;
     }
 
 }

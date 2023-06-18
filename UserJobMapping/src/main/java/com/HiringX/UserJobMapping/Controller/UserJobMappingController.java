@@ -2,6 +2,7 @@ package com.HiringX.UserJobMapping.Controller;
 
 import com.HiringX.UserJobMapping.Entity.UserJobMapping;
 import com.HiringX.UserJobMapping.Service.UserJobMappingService;
+import jakarta.ws.rs.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,6 +42,11 @@ public class UserJobMappingController {
     @GetMapping("/getUsersForJob/{jobId}")
     public List<Long> getMappingByJobId(@PathVariable Long jobId){
         return userjobmappingservice.getMappingByJobId(jobId);
+    }
+    //get job ids in which a particular user has applied
+    @GetMapping("/getjobidsforauser/{userid}")
+    public List<Long> getJobIdsForAUser(@PathVariable Long userid){
+        return userjobmappingservice.getJobIdsForAUser(userid);
     }
 
 }

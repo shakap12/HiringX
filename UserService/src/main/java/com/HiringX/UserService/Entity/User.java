@@ -28,7 +28,6 @@ public class User {
     @Column(name = "User Name")
     @NotNull(message = "User Name should not be null")
     @NotBlank(message = "User Name should not be blank")
-    @Length(min = 5 , max=18 , message = "Contact Developer")
     private String userName;
 
     @Column(name = "User Email")

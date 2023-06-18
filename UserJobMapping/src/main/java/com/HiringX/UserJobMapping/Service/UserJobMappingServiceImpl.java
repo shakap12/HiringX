@@ -46,4 +46,15 @@ public class UserJobMappingServiceImpl implements UserJobMappingService{
         if(UserIdsForAJob.isEmpty()) throw new JobMappingNotFoundException(jobId);
         return UserIdsForAJob;
     }
+
+    @Override
+    public List<Long> getJobIdsForAUser(Long userid) {
+        List<UserJobMapping> listOfmapping=new ArrayList<>();
+        List<Long> listofJobIds=new ArrayList<>();
+        listOfmapping=userjobmappingrepository.findAllByUserId(userid);
+        listOfmapping.forEach((ele)->{
+            listofJobIds.add(ele.getUserJobId());
+        });
+        return listofJobIds;
+    }
 }

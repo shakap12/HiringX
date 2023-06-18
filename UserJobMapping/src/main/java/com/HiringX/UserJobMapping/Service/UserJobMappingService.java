@@ -22,7 +22,10 @@ public interface UserJobMappingService {
     //get list of users who have applied for a specific job
     public List<Long> getMappingByJobId(Long jobId);
 
-    //get details of all users who have applied for a particular job
+    //get job ids in which a particular user has applied
+    public List<Long> getJobIdsForAUser(Long userid);
+
+
 
 
 

@@ -43,4 +43,7 @@ public interface JobService {
 
     //Delete job with passed job ID
     public void deleteJobWithId(Long jobId);
+
+    //get jobs for a specific user
+    public List<Job> getJobsForAUser(Long userid);
 }
