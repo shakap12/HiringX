@@ -29,7 +29,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userrepository;
-
     public WebClient userJobMappingWebclient;
     public WebClient jobWebClient;
 
@@ -57,11 +56,25 @@ public class UserServiceImpl implements UserService {
     public User getUserById(Long id) {
         User user = userrepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
         log.info("Fetching user from User Id");
-        if (Objects.nonNull(user)) user.setAppliedJobs(
-                userJobMappingWebclient.get()
-                        .uri("/getforuser" + user.getUserId())
-                        .retrieve().onStatus(HttpStatusCode::is4xxClientError, clientResponse -> Mono.error(new UserNotFoundException(user.getUserId()))).bodyToFlux(UserJobMapping.class).collectList().block());
-        else log.warn("No User found with given Id");
+        System.out.println(user.getUserName());
+        List<UserJobMapping> list=new ArrayList<>();
+        try{
+            if (Objects.nonNull(user)) {
+                list = userJobMappingWebclient.get()
+                        .uri("getforuser/" + user.getUserId())
+                        .retrieve()
+                        .onStatus(HttpStatusCode::is4xxClientError, clientResponse -> Mono.error(new UserNotFoundException(user.getUserId())))
+                        .bodyToFlux(UserJobMapping.class).
+                        collectList().
+                        block();
+            }
+        }
+        catch (Exception e){
+            log.warn("No User found with given Id");
+        }
+        finally {
+            user.setAppliedJobs(list);
+        }
         return user;
     }
 
@@ -71,15 +84,20 @@ public class UserServiceImpl implements UserService {
     public List<User> getAllUsers() {
         List<User> allUser=userrepository.findAll();
         log.info("Fetching all users from repository");
-        allUser.forEach(user -> userJobMappingWebclient
-                        .get()
-                        .uri("getforuser/"+user.getUserId())
-                        .retrieve()
-                        .onStatus(HttpStatusCode::is4xxClientError,clientResponse -> Mono.error(new UserNotFoundException(user.getUserId())))
-                        .bodyToFlux(UserJobMapping.class)
-                        .collectList()
-                        .block()
-                );
+        try{
+            allUser.forEach(user -> user.setAppliedJobs(userJobMappingWebclient
+                    .get()
+                    .uri("getforuser/"+user.getUserId())
+                    .retrieve()
+                    .onStatus(HttpStatusCode::is4xxClientError,clientResponse -> Mono.error(new UserNotFoundException(user.getUserId())))
+                    .bodyToFlux(UserJobMapping.class)
+                    .collectList()
+                    .block()
+            ));
+        }
+        catch ( Exception e){
+            log.warn("No jobs found for current user-"+e);
+        }
         return allUser;
     }
 
@@ -200,4 +218,11 @@ public class UserServiceImpl implements UserService {
         });
         return mapStoringUserDetailsForEachLocation;
    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        User newUser= userrepository.findByUserEmail(email);
+        System.out.println("user by email--"+newUser);
+        return newUser;
+    }
 }

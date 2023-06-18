@@ -24,10 +24,10 @@ class UserJobMappingServiceTest {
 
     @Test
     void testForGetMappingByParticularUser() {
-        long userId=1;
-        UserJobMapping mappingObj1=UserJobMapping.builder().mappingId(1l).userId(1l).userJobId(1l).build();
-        UserJobMapping mappingObj2=UserJobMapping.builder().mappingId(2l).userId(1l).userJobId(2l).build();
-        UserJobMapping mappingObj3=UserJobMapping.builder().mappingId(3l).userId(1l).userJobId(3l).build();
+        long userId=2;
+        UserJobMapping mappingObj1=UserJobMapping.builder().mappingId(1l).userId(2l).userJobId(57l).build();
+        UserJobMapping mappingObj2=UserJobMapping.builder().mappingId(2l).userId(2l).userJobId(58l).build();
+        UserJobMapping mappingObj3=UserJobMapping.builder().mappingId(3l).userId(2l).userJobId(59l).build();
         List<UserJobMapping> testList=new ArrayList<>();
             testList.add(mappingObj1);
             testList.add(mappingObj2);
@@ -40,10 +40,11 @@ class UserJobMappingServiceTest {
 
     @Test
     void testForGetMappingByJobId() {
-            long jobId=3;
+            long jobId=59;
             List<Long> testList=new ArrayList<>();
-            testList.add(1l);
             testList.add(2l);
+            testList.add(53l);
+            testList.add(54l);
             List<Long> list=userJobMappingService.getMappingByJobId(jobId);
             assertEquals(testList,list);
             //assertNotEquals(testList,list);

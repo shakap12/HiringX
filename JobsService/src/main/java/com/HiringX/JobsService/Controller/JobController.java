@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/jobs")
+@CrossOrigin("http://localhost:3000")
 public class JobController {
 
     @Autowired
@@ -74,5 +75,23 @@ public class JobController {
     public List<Long> getJobsIdsForLocation(@PathVariable String location){
         log.info("Inside Job Controller-Get Job Id's for a given location");
         return jobservice.getJobIdsForLocation(location);
+    }
+
+    @GetMapping("/getjobcompanies")
+    public List<String> getCompanies(){
+        log.info("Inside Job Controller-Get Companies");
+        return jobservice.getAllCompanies();
+    }
+
+    @GetMapping("getjoblocations")
+    public List<String> getLocations(){
+        log.info("Inside Job Controller-Get Locations");
+        return jobservice.getAllLocations();
+    }
+
+    @DeleteMapping("/delete/{jobId}")
+    public void deleteJob(@PathVariable Long jobId){
+        log.info("Inside Job Controller-Delete Job");
+        jobservice.deleteJobWithId(jobId);
     }
 }

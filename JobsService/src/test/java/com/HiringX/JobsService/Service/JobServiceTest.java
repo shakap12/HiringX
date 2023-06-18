@@ -18,16 +18,16 @@ class JobServiceTest {
 
     @Test
     void TestForGetJobsOnBasisOfLocation() {
-        String location="gurgaon";
-        String failLocation="gurg";
+        String location="chennai";
+        String failLocation="chn";
         List<Job> testList=new ArrayList<>();
         Job job= Job.builder()
-                .jobId(3l)
-                .jobTitle("FSE")
-                .jobRequiredSkill1("ReactJS")
-                .jobRequiredSkill2("Spring Boot")
-                .jobCompany("Cognizant")
-                .jobLocation("Gurgaon")
+                .jobId(104l)
+                .jobTitle("SDE")
+                .jobRequiredSkill1("Java")
+                .jobRequiredSkill2("DevOps")
+                .jobCompany("Maersk")
+                .jobLocation("Chennai")
                 .build();
         testList.add(job);
         List<Job> passList=jobService.getJobsOnBasisOfLocation(location);
@@ -39,16 +39,16 @@ class JobServiceTest {
 
     @Test
     void getJobsOnBasisOfSkill() {
-        String skill="ReactJS";
+        String skill="DevOps";
         String failSkill="rect";
         List<Job> testList=new ArrayList<>();
         Job job= Job.builder()
-                .jobId(3l)
-                .jobTitle("FSE")
-                .jobRequiredSkill1("ReactJS")
-                .jobRequiredSkill2("Spring Boot")
-                .jobCompany("Cognizant")
-                .jobLocation("Gurgaon")
+                .jobId(104l)
+                .jobTitle("SDE")
+                .jobRequiredSkill1("Java")
+                .jobRequiredSkill2("DevOps")
+                .jobCompany("Maersk")
+                .jobLocation("Chennai")
                 .build();
         testList.add(job);
         List<Job> passList=jobService.getJobsOnBasisOfSkill(skill);
@@ -63,12 +63,12 @@ class JobServiceTest {
         String failCompany="mers";
         List<Job> testList=new ArrayList<>();
         Job job= Job.builder()
-                .jobId(52l)
-                .jobTitle("FSE")
-                .jobRequiredSkill1("Node")
-                .jobRequiredSkill2("Angular")
+                .jobId(104l)
+                .jobTitle("SDE")
+                .jobRequiredSkill1("Java")
+                .jobRequiredSkill2("DevOps")
                 .jobCompany("Maersk")
-                .jobLocation("Noida")
+                .jobLocation("Chennai")
                 .build();
         testList.add(job);
         List<Job> passList=jobService.getJobsOnBasisOfCompany(company);
@@ -81,7 +81,7 @@ class JobServiceTest {
     void getJobIdsForACompany() {
         String company="maersk";
         List<Long> list=new ArrayList<>();
-        list.add(52l);
+        list.add(104l);
         List<Long> testList=jobService.getJobIdsForACompany(company);
 
         assertEquals(testList,list);
@@ -89,10 +89,9 @@ class JobServiceTest {
 
     @Test
     void getJobIdsForLocation() {
-        String location="Noida";
+        String location="Chennai";
         List<Long> list=new ArrayList<>();
-        list.add(2l);
-        list.add(52l);
+        list.add(104l);
         List<Long> testList=jobService.getJobIdsForLocation(location);
         assertEquals(testList,list);
     }

@@ -23,15 +23,15 @@ public class Job {
 
     @NotNull(message = "This field cannot be empty")
     @NotBlank(message = "Title cannot be blank")
-    @Length(min=1,max=10,message = "Enter valid title")
+    @Length(min=1,max=20,message = "Enter valid title")
     private String jobTitle;
 
     @NotNull(message = "This field cannot be null")
-    @Length(min=1,max=10,message = "Enter valid skill")
+    @Length(min=1,max=15,message = "Enter valid skill")
     private String jobRequiredSkill1;
 
     @NotNull(message = "This field cannot be null")
-    @Length(min=1,max=10,message = "Enter valid skill")
+    @Length(min=1,max=15,message = "Enter valid skill")
     private String jobRequiredSkill2;
 
     @NotNull(message = "This field cannot be null")

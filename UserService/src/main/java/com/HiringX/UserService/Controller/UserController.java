@@ -2,8 +2,10 @@ package com.HiringX.UserService.Controller;
 
 import com.HiringX.UserService.Client.UserJobMappingClient;
 import com.HiringX.UserService.Entity.User;
+import com.HiringX.UserService.Exception.UserNotFoundException;
 import com.HiringX.UserService.Service.UserService;
 import jakarta.validation.Valid;
+import jakarta.ws.rs.Path;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin("http://localhost:3000")
 public class UserController {
 
     @Autowired
@@ -41,6 +44,14 @@ public class UserController {
         return userserivce.getUserById(userid);
     }
 
+    @GetMapping("/getbyemail/{email}")
+    public User getUserByEmail(@PathVariable String email){
+        log.info("Inside user controller-GET/Email");
+        User newUser=userserivce.getUserByEmail(email);
+        if(newUser==null)throw new UserNotFoundException(email);
+        return newUser;
+    }
+
     @PutMapping("/put")
     public User updateUser(@RequestBody User user) {
         log.info("Inside user controller-PUT");
@@ -59,8 +70,8 @@ public class UserController {
     }
 
     @GetMapping("/getapplicationsforlocation/{location}")
-    public HashMap<Long,List<User>> getUsersForALocation(@PathVariable String location){
-        log.info("Inside user controller-Gte job applications on basis of location");
+        public HashMap<Long,List<User>> getUsersForALocation(@PathVariable String location){
+        log.info("Inside user controller-Get job applications on basis of location");
         return userserivce.getUsersForALocation(location);
     }
 }

@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/userjobmapping")
+@CrossOrigin("http://localhost:3000")
 public class UserJobMappingController {
 
     @Autowired

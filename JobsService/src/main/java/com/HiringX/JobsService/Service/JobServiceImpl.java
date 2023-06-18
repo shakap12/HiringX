@@ -106,4 +106,31 @@ public class JobServiceImpl implements JobService{
         }
         else return jobIdsForLocation;
     }
+
+    @Override
+    public List<String> getAllCompanies() {
+        List<String> companies=new ArrayList<>();
+        List<Job> newList=jobrepository.findAll();
+        for(Job ele:newList){
+            if(!companies.contains(ele.getJobCompany()))companies.add(ele.getJobCompany());
+        }
+        return companies;
+    }
+
+    @Override
+    public List<String> getAllLocations() {
+        List<String> locations=new ArrayList<>();
+        List<Job> newList=jobrepository.findAll();
+        for(Job ele:newList){
+            if(!locations.contains(ele.getJobLocation()))locations.add(ele.getJobLocation());
+        }
+        return locations;
+    }
+
+    @Override
+    public void deleteJobWithId(Long jobId) {
+        log.warn("Deleting job with ID-"+jobId);
+        jobrepository.deleteById(jobId);
+    }
+
 }

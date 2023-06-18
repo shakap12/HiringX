@@ -34,4 +34,13 @@ public interface JobService {
 
     //get jobs ids belonging to a particular location
     public List<Long> getJobIdsForLocation(String location);
+
+    //get all companies
+    public List<String> getAllCompanies();
+
+    //get all job locations
+    public List<String> getAllLocations();
+
+    //Delete job with passed job ID
+    public void deleteJobWithId(Long jobId);
 }

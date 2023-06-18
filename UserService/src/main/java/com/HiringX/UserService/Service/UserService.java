@@ -29,4 +29,7 @@ public interface UserService {
 
     // to return a map containing list of users belonging to different jobs of different/same company but SAME Location
     public HashMap<Long ,List<User>> getUsersForALocation(String location);
+
+    //to return a single user as per the EMAIL
+    public User getUserByEmail(String email);
 }
