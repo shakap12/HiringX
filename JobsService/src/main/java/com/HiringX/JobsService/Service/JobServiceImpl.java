@@ -161,9 +161,15 @@ public class JobServiceImpl implements JobService{
 
         System.out.println(listofJobIdsForAUser);
         List<Job> jobsForASpecificUser = new ArrayList<>();
-        listofJobIdsForAUser.forEach((ele)->{
-            jobsForASpecificUser.add(jobrepository.findById(ele).orElseThrow(()->new JobNotFoundException(ele)));
-        });
+        for(Long ele:listofJobIdsForAUser) {
+            try {
+                jobsForASpecificUser.add(jobrepository.findById(ele).orElseThrow(() -> new JobNotFoundException(ele)));
+            } catch (JobNotFoundException e) {
+                System.out.println("No Job found for given Id");
+            } finally {
+                continue;
+            }
+        }
         return jobsForASpecificUser;
     }
 
