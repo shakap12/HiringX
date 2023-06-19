@@ -104,12 +104,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public User updateUser(Long userId, User user){
         log.info("User updated with new values");
+
         return userrepository.findById(userId).map(newuser->{
-            newuser.setUserId(user.getUserId());
-            newuser.setUserName(user.getUserName());
-            newuser.setUserEmail(user.getUserEmail());
-            newuser.setSkill1(user.getSkill1());
-            newuser.setSkill2(user.getSkill2());
+            if(Objects.nonNull(user.getUserName()) && user.getUserName()!="")newuser.setUserName(user.getUserName());
+            if(Objects.nonNull(user.getUserEmail()) && user.getUserEmail()!="")newuser.setUserEmail(user.getUserEmail());
+            if(Objects.nonNull(user.getSkill1()) && user.getSkill1()!="")newuser.setSkill1(user.getSkill1());
+            if(Objects.nonNull(user.getSkill2()) && user.getSkill2()!="")newuser.setSkill2(user.getSkill2());
             return userrepository.save(newuser);
         }).orElseThrow(()-> new UserNotFoundException(userId));
     }
