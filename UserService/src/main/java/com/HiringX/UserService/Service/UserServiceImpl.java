@@ -118,14 +118,16 @@ public class UserServiceImpl implements UserService {
     public List<User> getUsersForAJob(Long jobId) {
         log.info("Inside get USERS for the given JOB ID");
         List<User> usersForAJobWithDetails=new ArrayList<>();
-        List<Long> usersForAJob=userJobMappingWebclient
-                .get()
-                .uri("/getUsersForJob/"+jobId)
-                .retrieve()
-                .onStatus(HttpStatusCode::is4xxClientError,clientResponse -> Mono.error(new UserNotFoundException(jobId)))
-                .bodyToFlux(Long.class)
-                .collectList()
-                .block();
+
+            List<Long> usersForAJob = userJobMappingWebclient
+                    .get()
+                    .uri("/getUsersForJob/" + jobId)
+                    .retrieve()
+                    .onStatus(HttpStatusCode::is4xxClientError, clientResponse -> Mono.error(new UserNotFoundException(jobId)))
+                    .bodyToFlux(Long.class)
+                    .collectList()
+                    .block();
+        System.out.println("users for a job-->"+usersForAJob);
         usersForAJob.forEach(ele->{
             User user=userrepository.findById(ele).orElseThrow(()-> new UserNotFoundException(ele));
             usersForAJobWithDetails.add(user);

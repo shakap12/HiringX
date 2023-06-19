@@ -36,11 +36,11 @@ public class Job {
 
     @NotNull(message = "This field cannot be null")
     @NotBlank(message = "This field cannot be blank")
-    @Length(min=1,max=12,message = "Enter a valid company name")
+    @Length(min=1,max=20,message = "Enter a valid company name")
     private String jobCompany;
 
     @NotNull(message = "This field cannot be null")
     @NotBlank(message = "This field cannot be blank")
-    @Length(min=1,max = 12,message = "Enter a valid location")
+    @Length(min=1,max = 15,message = "Enter a valid location")
     private String jobLocation;
 }

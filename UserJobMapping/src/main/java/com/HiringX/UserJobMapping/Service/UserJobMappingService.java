@@ -25,9 +25,6 @@ public interface UserJobMappingService {
     //get job ids in which a particular user has applied
     public List<Long> getJobIdsForAUser(Long userid);
 
-
-
-
-
-
+    //dekete job Mapping
+    public void deleteJobMapping(Long jobId, Long userId);
 }

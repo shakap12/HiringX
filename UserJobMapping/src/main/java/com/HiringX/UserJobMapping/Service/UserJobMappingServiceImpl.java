@@ -57,4 +57,9 @@ public class UserJobMappingServiceImpl implements UserJobMappingService{
         });
         return listofJobIds;
     }
+
+    @Override
+    public void deleteJobMapping(Long jobId, Long userId) {
+        userjobmappingrepository.deleteByUserJobIdANDUserId(jobId, userId);
+    }
 }

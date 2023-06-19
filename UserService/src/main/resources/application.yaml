@@ -8,7 +8,7 @@ spring:
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://localhost:3306/hiringx
       username: root
-      password: mysql@123
+      password: mysql
   jpa:
     hibernate:
       ddlAuto: update

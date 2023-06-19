@@ -49,4 +49,9 @@ public class UserJobMappingController {
         return userjobmappingservice.getJobIdsForAUser(userid);
     }
 
+    @DeleteMapping("/deletemapping/{jobId}/{userId}")
+    public void deleteJobMapping(@PathVariable Long jobId,@PathVariable Long userId){
+         userjobmappingservice.deleteJobMapping(jobId,userId);
+    }
+
 }
